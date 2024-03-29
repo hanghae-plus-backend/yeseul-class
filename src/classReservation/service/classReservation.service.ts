@@ -73,8 +73,18 @@ import { ClassRepository } from '../repositories/class.repository';
     }
 
     
-  async checkIfUserApplied(classId: number, userId: number): Promise<boolean> {
+  async checkUserReservation(classId: number, userId: number): Promise<ClassReservation | boolean> {
     // 여기에 특강 신청 여부를 조회하는 로직 구현
-    return false;
+    try{
+        const existingReservation = await this.classReservationRepository.checkUserReservation(classId, userId)  //비관적락 미적용
+        if (existingReservation && existingReservation.is_success) {
+            //존재
+            return existingReservation
+        } else {
+            return false
+        }
+    } catch (error) {
+        throw error;
+    }
   }
 }

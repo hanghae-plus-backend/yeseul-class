@@ -21,6 +21,10 @@ export class ClassReservationRepository extends Repository<ClassReservation> imp
   findUserReservation(classId:number, userId:number): Promise<ClassReservation | undefined> {
     return this.findOne({ where: { class_id: classId , user_id: userId }, lock: { mode: 'pessimistic_write' }})
   }
+  checkUserReservation(classId:number, userId:number): Promise<ClassReservation | undefined> {
+    return this.findOne({ where: { class_id: classId , user_id: userId }}),
+  }
+
 
   createNew(classData: Partial<ClassReservation>): Promise<ClassReservation> {
 //   createNew(classData: CreateClassReservationDto): Promise<ClassReservation> {
