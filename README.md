@@ -1,10 +1,17 @@
+# Apply Class Module
 
+## ERD
 
 ![alt text](image.png)
 
 ## Think About...
-1) 디렉토리 구조를 어떻게 가져가면 좋을까?!
-2) 
+
+      ### 특강에 대한 조건1:  한 유저는 하나의 클래스를 1번만 신청할 수 있다.
+      ### 특강에 대한 조건2: transaction이 중요하고 30명이 안찼는지 확실히 확인이 된 이후에 신청할 수 있다.
+      ### 특강에 대한 조건3: 성공했으면, is_success결과를 True로 반환하고
+      ### 특강에 대한 조건4: 유저의 이유로 실패하면 is_success의 결과를 ㅠ로 반환하고 그 그 detail도 적음
+      ### 특강에 대한 조건5: 그냥 트랜젝션 실패면 rollBackTransaction
+      
 
 ## Installation
 

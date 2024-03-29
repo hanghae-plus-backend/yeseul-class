@@ -2,6 +2,8 @@ import { BadRequestException, Body, Controller, Get, Post, NotFoundException, Pa
 import { NotFoundError } from "rxjs";
 import { CreateClassDto } from "../dto/createClass.dto";
 import { Connection } from 'typeorm'; // TypeORM의 Connection 임포트
+import { CreateClassReservationDto } from "../dto/createClassReservation.dto";
+import { ClassReservation } from "../entities/classReservation.entity"
 
 /* 데이터 삽입 용으로 만든 컨트롤러 입니다. 실제 과제용 X */
 
@@ -27,4 +29,12 @@ export class ClassController{
         const classReservationData = [1,2,3,4,5];
         return classReservationData
     }
+
+    // 여기서 부터
+    // @Post(":id/apply")
+    // async applyClass(@Param('id') classId:number, @Body()CreateClassReservationDto:CreateClassReservationDto): Promise<ClassReservation> {
+    //     const applyResult = await this.classReservationService
+
+
+    // }
 }

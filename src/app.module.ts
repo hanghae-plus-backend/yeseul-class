@@ -4,6 +4,7 @@ import { ClassReservationController } from './classReservation/controllers/class
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ClassController } from './classReservation/controllers/class.controller';
+import { ClassReservationService } from './classReservation/service/classReservation.service';
 require('dotenv').config();
 
 @Module({
