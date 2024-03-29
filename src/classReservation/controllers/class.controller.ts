@@ -12,13 +12,13 @@ export class ClassController{
 
     @Get('/') // 전체 특강 정보 조회
     async getClassInfo(): Promise<any> {
-        const classInfoRepository = this.connection.getRepository('ClassInfo'); // 데이터베이스와 연결된 레포지토리 얻기
+        const classInfoRepository = this.connection.getRepository('Class'); // 데이터베이스와 연결된 레포지토리 얻기
         return classInfoRepository.find(); // 모든 클래스 정보 반환
     }
 
     @Post('add/') // 특강 추가 API
     async createClass(@Body() classData: CreateClassDto): Promise<any> {
-        const classInfoRepository = this.connection.getRepository('ClassInfo'); // 데이터베이스와 연결된 레포지토리 얻기
+        const classInfoRepository = this.connection.getRepository('Class'); // 데이터베이스와 연결된 레포지토리 얻기
         return classInfoRepository.save(classData); // 클래스 정보 저장
     }
 
