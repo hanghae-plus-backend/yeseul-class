@@ -1,9 +1,37 @@
 # Apply Class Module
+***
 
 ## ERD
 
 ![alt text](image.png)
 
+## 디렉토리 구조
+.
+├── app.controller.spec.ts
+├── app.controller.ts
+├── app.module.ts
+├── app.service.ts
+├── classReservation
+│   ├── class.module.ts
+│   ├── controllers
+│   │   ├── class.controller.ts
+│   │   └── classReservation.controller.ts
+│   ├── dto
+│   │   ├── applyClass.dto.ts
+│   │   ├── createClass.dto.ts
+│   │   └── createClassReservation.dto.ts
+│   ├── entities
+│   │   ├── class.entity.ts
+│   │   └── classReservation.entity.ts
+│   ├── repositories
+│   │   ├── class.repository.interface.ts
+│   │   ├── class.repository.ts
+│   │   ├── classReservation.repository.interface.ts
+│   │   └── classReservation.repository.ts
+│   └── service
+│       ├── classReservation.service.ts
+│       └── classReservation.validator.ts
+└── main.ts
 ## Think About...
 
       ### 특강에 대한 조건1:  한 유저는 하나의 클래스를 1번만 신청할 수 있다.
