@@ -6,7 +6,7 @@ export class ClassReservation {
     id: number;
 
     @Column()
-    class_id: string;
+    class_id: number;
 
     @Column()
     user_id: number;

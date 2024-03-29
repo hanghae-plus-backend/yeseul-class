@@ -16,9 +16,11 @@ export class ClassReservationController{
     //     return classReservationData
     // }
     @Post(':class_id/') // 특강 신청 API
-    async ApplyClass(@Param('class_id') classId: number,  @Body()applyData:ApplyClassDto): Promise<void>{//<ClassReservation> {
+    async ApplyClass(@Param('class_id') classId: number,  @Body()applyData:ApplyClassDto): Promise<ClassReservation> {
         const { userId } = applyData
+        console.log(classId, userId)
         let applyResult = await this.reservationService.applyForClass(classId, userId)
+        return applyResult
 
     }
 }
