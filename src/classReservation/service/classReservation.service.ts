@@ -32,6 +32,7 @@ import { ClassRepository } from '../repositories/class.repository';
         // if (!selectedClass) {
         //     throw new NotFoundException('해당하는 클래스를 찾을 수 없습니다.');
         // }
+        // TODO: 최대인원값 selectedClass 에서 가져오기
         
         try {
 
