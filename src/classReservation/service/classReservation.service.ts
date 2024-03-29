@@ -32,8 +32,6 @@ import { ClassRepository } from '../repositories/class.repository';
         if (!selectedClass) {
             throw new NotFoundException('해당하는 클래스를 찾을 수 없습니다.');
         }
-        //TODO: 최대인원값 selectedClass 에서 가져오기
-        //TODO: 날짜도 selectedClass 에서 가져오기
         const maxStudent = selectedClass.max_student_num
 
         const currentDate = new Date();
@@ -48,13 +46,11 @@ import { ClassRepository } from '../repositories/class.repository';
             const existingReservation = await this.classReservationRepository.findUserReservation(
                 classId, userId) // 비관적 락 적용
             if (existingReservation) {
-                // TODO: 실패 케이스에도 is_success:false 결과값 저장
                 throw new HttpException('중복 예약은 불가능합니다', HttpStatus.BAD_REQUEST)
             }
-            // 예약갯수 30개 이상이면 불가. 근데 여기까지 하고 이후에 따른거랑 겹쳐서 여러명이 될 수도 있잖아? 락을 걸어야 할듯?
+            // 예약갯수 30개 이상이면 불가. 근데 여기까지 하고 이후에 따른거랑 겹쳐서 여러명이 될 수도 있잖아? 락을 걸어야 할듯? => 리포지토리 내에서 락 적용
             const currentlyReservedSeats = await this.classReservationRepository.findByClass(classId)
             if (currentlyReservedSeats.length>=maxStudent) {
-                // TODO: 실패 케이스에도 is_success:false 결과값 저장
                 throw new HttpException('해당 클래스는 정원이 가득찼습니다. 감사합니다.',HttpStatus.BAD_REQUEST)
             }
 

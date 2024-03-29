@@ -3,5 +3,13 @@ import { Class } from '../entities/class.entity';
 
 @EntityRepository(Class)
 export class ClassRepository extends Repository<Class> {
-  // 여기에 추가적인 메서드들을 구현할 수 있습니다.
+  findAll(): Promise<Class[]> {
+    return this.find();
+  }
+  findById(id: number): Promise<Class | undefined> {
+    return this.findOne({ where: {id}});
+  }
+  createClass(classData: Partial<Class>): Promise<Class> {
+    return this.save(classData)
+  }
 }
