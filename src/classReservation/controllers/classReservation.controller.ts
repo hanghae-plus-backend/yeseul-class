@@ -11,7 +11,7 @@ export class ClassReservationController{
 
 
     @Get(':class_id/user/:user_id') // 특강 신청 여부 조회 API : 히스토리로그를 참조해서 해당 유저가 수업에 예약했는지 확인하는 함수
-    async checkUserClassReservation(@Param('class_id') classId: number, @Param('user_id') userId: number): Promise <number[]> { // async 일때는 promise를 리턴해야 한다
+    async checkUserClassReservation(@Param('class_id') classId: number, @Param('user_id') userId: number): Promise <ClassReservation | boolean> { // async 일때는 promise를 리턴해야 한다
         const userReservationResult = await this.reservationService.checkUserReservation(classId, userId)
         return userReservationResult
     }
